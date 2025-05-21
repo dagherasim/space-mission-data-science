@@ -1,0 +1,11 @@
+
+---
+
+## ✅ `requirements.txt`
+
+```txt
+pandas
+matplotlib
+scikit-learn
+streamlit
+python-dateutil

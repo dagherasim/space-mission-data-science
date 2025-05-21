@@ -1,0 +1,63 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+
+# --------------------------------------------------------------------------------------------------
+# PHASE 2: Exploratory Data Analysis
+# --------------------------------------------------------------------------------------------------
+# This script performs an initial analysis of the cleaned space mission dataset.
+# Key outputs include:
+#   - Launch frequency over time
+#   - Most active organizations
+#   - Distribution of mission outcomes
+# Charts are saved in the 'charts/' directory.
+# --------------------------------------------------------------------------------------------------
+
+# Load the cleaned dataset from Phase 1
+df = pd.read_csv("processed_data/mission_launches_clean.csv")
+
+# Create output directory for charts
+charts_dir = "charts"
+os.makedirs(charts_dir, exist_ok=True)
+
+# === Launches Over Time ===
+launches_per_year = df['Year'].value_counts().sort_index()
+
+plt.figure(figsize=(12, 6))
+plt.plot(launches_per_year.index, launches_per_year.values, marker='o')
+plt.title("Number of Space Launches Per Year")
+plt.xlabel("Year")
+plt.ylabel("Number of Launches")
+plt.grid(True)
+plt.tight_layout()
+plt.savefig(f"{charts_dir}/launches_per_year.png")
+plt.close()
+
+# === Most Active Organizations ===
+top_orgs = df['Organisation'].value_counts().head(10)
+
+plt.figure(figsize=(10, 6))
+top_orgs.plot(kind='bar')
+plt.title("Top 10 Most Active Launch Organizations")
+plt.xlabel("Organization")
+plt.ylabel("Number of Launches")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig(f"{charts_dir}/top_organizations.png")
+plt.close()
+
+# === Mission Outcome Distribution ===
+mission_outcomes = df['Mission_Status'].value_counts()
+
+plt.figure(figsize=(8, 5))
+mission_outcomes.plot(kind='bar', color=['green', 'red', 'gray'])
+plt.title("Mission Outcome Distribution")
+plt.xlabel("Mission Status")
+plt.ylabel("Number of Missions")
+plt.tight_layout()
+plt.savefig(f"{charts_dir}/mission_outcomes.png")
+plt.close()
+
+# Phase 2 completed
+print("✅ Phase 2 completed successfully.")
+print("Charts saved to:", charts_dir)
