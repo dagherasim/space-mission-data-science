@@ -1,7 +1,7 @@
-# 🚀 Space Mission Data Analysis (1957–Present)
+# 🚀 Space Mission Data Science Project: From Launches to Mars
 
-A full-scale data science project analyzing global space missions from 1957 to the present.  
-Includes trend analysis, success rate evaluation, machine learning predictions, and a simulation estimating which space agency might reach Mars first.
+A complete data science pipeline analyzing space mission records from 1957 to the present.  
+Includes data cleaning, exploratory analysis, machine learning modeling, and a simulation estimating which agency is most likely to reach Mars first.
 
 ---
 
